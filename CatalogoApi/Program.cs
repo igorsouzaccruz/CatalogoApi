@@ -1,4 +1,5 @@
 using CatalogoApi.ApiEndpoints;
+using CatalogoApi.AppServicesExtensions;
 using CatalogoApi.Context;
 using CatalogoApi.Models;
 using CatalogoApi.Services;
@@ -80,13 +81,11 @@ app.MapAutenticacaoEndpoints();
 app.MapCategoriasEndpoints();
 app.MapProdutosEndpoints();
 
+var environment = app.Environment;
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseExceptionsHandling(environment)
+    .UseSwaggerMiddleware()
+    .UseAppCors();
 
 app.UseAuthentication();
 app.UseAuthorization();
