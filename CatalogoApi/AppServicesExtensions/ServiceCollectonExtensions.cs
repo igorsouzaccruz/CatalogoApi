@@ -12,7 +12,7 @@ namespace CatalogoApi.AppServicesExtensions
     {
         public static WebApplicationBuilder AddApiSwagger(this WebApplicationBuilder builder)
         {
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwagger();
             return builder;
         }
 
